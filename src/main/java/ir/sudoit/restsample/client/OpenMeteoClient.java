@@ -14,7 +14,7 @@ public interface OpenMeteoClient {
     ResponseEntity<LocationDataDto> getForecast(
             @RequestParam("latitude") Double latitude,
             @RequestParam("longitude") Double longitude,
-            @RequestParam(value = "timezone", required = false) String timezone,
+            @RequestParam(value = "timezone") String timezone,
             @RequestParam("forecast_days") Integer forecastDays
     );
     
