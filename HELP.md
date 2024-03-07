@@ -12,3 +12,6 @@
 * [Spring Web](https://docs.spring.io/spring-boot/docs/3.2.3/reference/htmlsingle/index.html#web)
 * [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
 * [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+* [Pessimistic and Optimistic Locking in JPA](https://beratyesbek.medium.com/pessimistic-and-optimistic-locking-in-jpa-spring-boot-aa59f2b906fa)
+* [Transaction Propagation](https://www.baeldung.com/spring-transactional-propagation-isolation)
+
