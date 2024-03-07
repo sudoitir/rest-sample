@@ -8,8 +8,14 @@ import org.springframework.lang.NonNull;
 
 import java.util.List;
 
-public interface LocationDataRepository extends JpaRepository<LocationData, Long>, JpaSpecificationExecutor<LocationData> {
+/**
+ * {@link JpaSpecificationExecutor} offers a powerful mechanism for building and executing dynamic queries against JPA
+ * entities in a type-safe manner, thereby enhancing the flexibility and maintainability of your data access layer.
+ */
+public interface LocationDataRepository
+        extends JpaRepository<LocationData, Long>, JpaSpecificationExecutor<LocationData> {
 
     List<LocationDataProjection> findByTimezoneLikeIgnoreCaseOrderByGenerationTimeMsDesc(@NonNull String timezone);
+
     List<LocationDataProjection> findAllBy();
 }
