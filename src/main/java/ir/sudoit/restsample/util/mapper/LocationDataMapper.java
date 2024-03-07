@@ -11,6 +11,7 @@ public interface LocationDataMapper {
     LocationData toEntity(LocationDataDto locationDataDto);
 
     LocationDataDto toDto(LocationData locationData);
+
     LocationDataDto toDto(LocationDataProjection locationData);
 
     @BeanMapping (nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
