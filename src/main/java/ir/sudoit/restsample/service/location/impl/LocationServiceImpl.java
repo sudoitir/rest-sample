@@ -10,6 +10,7 @@ import ir.sudoit.restsample.util.mapper.LocationDataMapper;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -52,7 +53,7 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
-    @Transactional
+    @Transactional (isolation = Isolation.SERIALIZABLE, rollbackFor = RuntimeException.class) // Pessimistic lock and rollbackFor RuntimeException(this is the default)
     public void create(LocationDataDto locationDataDto) {
         LocationData entity = locationDataMapper.toEntity(locationDataDto);
         locationDataRepository.save(entity);
