@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import ir.sudoit.restsample.dto.LocationDataDto;
 import ir.sudoit.restsample.service.location.LocationService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -72,7 +73,7 @@ public class LocationController {
                   content = @Content (schema = @Schema (type = "string", example = "OK")))
     @ApiResponse (responseCode = "400", description = "${location.controller.create.response.400.description}",
                   content = @Content)
-    public ResponseEntity<String> createCustomLocationData(@RequestBody LocationDataDto locationDataDto) {
+    public ResponseEntity<String> createCustomLocationData(@RequestBody @Valid LocationDataDto locationDataDto) {
         locationService.create(locationDataDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("OK");
     }
