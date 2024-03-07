@@ -73,7 +73,7 @@ public class LocationController {
                   content = @Content (schema = @Schema (type = "string", example = "OK")))
     @ApiResponse (responseCode = "400", description = "${location.controller.create.response.400.description}",
                   content = @Content)
-    public ResponseEntity<String> updateLocationData(@RequestBody LocationDataDto locationDataDto) {
+    public ResponseEntity<String> createCustomLocationData(@RequestBody LocationDataDto locationDataDto) {
         locationRestTemplateServiceImpl.create(locationDataDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("OK");
     }
