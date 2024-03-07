@@ -23,8 +23,7 @@ import java.util.List;
 @Tag (name = "Location Controller", description = "${location.controller.title}")
 public class LocationController {
 
-    // @Qualifier("locationFeignServiceImpl") for notice
-    private final LocationService locationRestTemplateServiceImpl;
+    private final LocationService locationService;
 
 
     @GetMapping ("location/{id}")
@@ -38,14 +37,14 @@ public class LocationController {
     public ResponseEntity<LocationDataDto> getLocation(
             @Parameter (description = "${location.controller.get.parameter.id.description}", required = true,
                         example = "1") @PathVariable Long id) {
-        return ResponseEntity.ok().body(locationRestTemplateServiceImpl.getLocationDate(id));
+        return ResponseEntity.ok().body(locationService.getLocationDate(id));
     }
 
     @GetMapping ("all")
     @Operation (summary = "${location.controller.get.all.summary}",
                 description = "${location.controller.get.all.description}")
     public ResponseEntity<List<LocationDataDto>> getAllLocationData() {
-        return ResponseEntity.ok().body(locationRestTemplateServiceImpl.getAllLocationDate());
+        return ResponseEntity.ok().body(locationService.getAllLocationDate());
     }
 
     @PutMapping ("update")
@@ -59,7 +58,7 @@ public class LocationController {
                         example = "51.5072") @RequestParam @NonNull Double latitude,
             @Parameter (description = "${location.controller.update.longitude.description}", required = true,
                         example = "-0.1275") @RequestParam @NonNull Double longitude) {
-        locationRestTemplateServiceImpl.updateLocationData(latitude, longitude);
+        locationService.updateLocationData(latitude, longitude);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
@@ -74,7 +73,7 @@ public class LocationController {
     @ApiResponse (responseCode = "400", description = "${location.controller.create.response.400.description}",
                   content = @Content)
     public ResponseEntity<String> createCustomLocationData(@RequestBody LocationDataDto locationDataDto) {
-        locationRestTemplateServiceImpl.create(locationDataDto);
+        locationService.create(locationDataDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("OK");
     }
 
