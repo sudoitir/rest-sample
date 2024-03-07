@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+//@Transactional Apply @Transactional for all methods in this class
 public class LocationServiceImpl implements LocationService {
 
     private final LocationDataRepository locationDataRepository;
