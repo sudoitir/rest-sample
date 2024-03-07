@@ -31,7 +31,7 @@ public class LocationServiceImpl implements LocationService {
         Optional<LocationDataDto> locationData = locationDataServiceFeignImpl.getLocationData(latitude, longitude);
         LocationData locationDataEntity = locationData.map(locationDataMapper::toEntity)
                 .orElseThrow(() -> new EntityNotFoundException("Data not received!"));
-        return locationDataRepository.save(locationDataEntity).getId();
+        return locationDataRepository.saveAndFlush(locationDataEntity).getId();
     }
 
     @Override
@@ -52,7 +52,9 @@ public class LocationServiceImpl implements LocationService {
     }
 
     @Override
+    @Transactional
     public void create(LocationDataDto locationDataDto) {
-
+        LocationData entity = locationDataMapper.toEntity(locationDataDto);
+        locationDataRepository.save(entity);
     }
 }
