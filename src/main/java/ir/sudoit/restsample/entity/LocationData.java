@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
 
@@ -41,7 +43,10 @@ import java.util.Objects;
 @Setter
 @Getter
 @NoArgsConstructor
-public class LocationData {
+public class LocationData implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -6484427406925377079L;
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
