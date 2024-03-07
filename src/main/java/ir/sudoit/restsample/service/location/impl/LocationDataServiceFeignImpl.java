@@ -17,7 +17,6 @@ public class LocationDataServiceFeignImpl implements LocationDataService {
     private final OpenMeteoClient openMeteoClient;
 
     @Override
-    @Transactional (timeout = 30)
     public Optional<LocationDataDto> getLocationData(Double latitude, Double longitude) {
         ResponseEntity<LocationDataDto> forecast = openMeteoClient.getForecast(latitude, longitude, "auto", 1);
         if (forecast.getStatusCode().is2xxSuccessful() && forecast.hasBody()) {
