@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 
 @Data
-@Schema(description = "DTO representing location data")
+@Schema (description = "DTO representing location data")
 public class LocationDataDto implements Serializable {
     @Serial
     private static final long serialVersionUID = 3557870467307623611L;
@@ -24,57 +24,57 @@ public class LocationDataDto implements Serializable {
     @NotNull
     private Double latitude;
 
-    @Schema(description = "مختصات طول جغرافیایی", example = "51.4215")
+    @Schema (description = "مختصات طول جغرافیایی", example = "51.4215")
     @NotNull
     private Double longitude;
 
-    @Schema(description = "مدت زمان تولید این داده ها بر حسب میلی ثانیه", example = "23.45")
+    @Schema (description = "مدت زمان تولید این داده ها بر حسب میلی ثانیه", example = "23.45")
     @NotNull
     private Double generationTimeMs;
 
-    @Schema(description = "افست در ثانیه از زمان UTC برای منطقه زمانی مکان", example = "12600")
+    @Schema (description = "افست در ثانیه از زمان UTC برای منطقه زمانی مکان", example = "12600")
     @NotNull
     private Integer utcOffsetSeconds;
 
-    @Schema(description = "نام منطقه زمانی برای مکان", example = "Asia/Tehran")
+    @Schema (description = "نام منطقه زمانی برای مکان", example = "Asia/Tehran")
     @NotBlank
     private String timezone;
 
-    @Schema(description = "منطقه زمانی", example = "+0330")
+    @Schema (description = "منطقه زمانی", example = "+0330")
     @NotBlank
     private String timezoneAbbreviation;
 
-    @Schema(description = "ارتفاع محل بر حسب متر", example = "24.5")
+    @Schema (description = "ارتفاع محل بر حسب متر", example = "24.5")
     @NotNull
     private Double elevation;
 
 
-    @JsonProperty("generationtime_ms")
+    @JsonProperty ("generationtime_ms")
     public void setGenerationTimeMs(Double generationTimeMs) {
         this.generationTimeMs = generationTimeMs;
     }
 
-    @JsonProperty("utc_offset_seconds")
+    @JsonProperty ("utc_offset_seconds")
     public void setUtcOffsetSeconds(Integer utcOffsetSeconds) {
         this.utcOffsetSeconds = utcOffsetSeconds;
     }
 
-    @JsonProperty("timezone_abbreviation")
+    @JsonProperty ("timezone_abbreviation")
     public void setTimezoneAbbreviation(String timezoneAbbreviation) {
         this.timezoneAbbreviation = timezoneAbbreviation;
     }
 
-    @JsonProperty("generationTimeMs")
+    @JsonProperty ("generationTimeMs")
     public Double getGenerationTimeMs() {
         return generationTimeMs;
     }
 
-    @JsonProperty("utcOffsetSeconds")
+    @JsonProperty ("utcOffsetSeconds")
     public Integer getUtcOffsetSeconds() {
         return utcOffsetSeconds;
     }
 
-    @JsonProperty("timezoneAbbreviation")
+    @JsonProperty ("timezoneAbbreviation")
     public String getTimezoneAbbreviation() {
         return timezoneAbbreviation;
     }
